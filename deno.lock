@@ -1,0 +1,58 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@hono/hono@^4.5.3": "jsr:@hono/hono@4.5.3",
+      "jsr:@lukeed/fetch-event-stream@^0.1.5": "jsr:@lukeed/fetch-event-stream@0.1.5",
+      "jsr:@mumulhl/duckduckgo-ai-chat@^2.0.3": "jsr:@mumulhl/duckduckgo-ai-chat@2.0.3",
+      "jsr:@std/http@^0.221.0": "jsr:@std/http@0.221.0",
+      "jsr:@std/streams@^0.221.0": "jsr:@std/streams@0.221.0",
+      "npm:hono-rate-limiter": "npm:hono-rate-limiter@0.4.0_hono@4.5.3"
+    },
+    "jsr": {
+      "@hono/hono@4.5.3": {
+        "integrity": "429923b2b3c6586a1450862328d61a1346fee5841e8ae86c494250475057213c"
+      },
+      "@lukeed/fetch-event-stream@0.1.5": {
+        "integrity": "50fe145b95e6ead49584c4f00dbb266c34a572e2ac97a924463f567887cd99ce",
+        "dependencies": [
+          "jsr:@std/http@^0.221.0",
+          "jsr:@std/streams@^0.221.0"
+        ]
+      },
+      "@mumulhl/duckduckgo-ai-chat@2.0.3": {
+        "integrity": "a343cac17308d3a07db9f167b4cf4f24691b890da6bb739437caa080b2c98d5c",
+        "dependencies": [
+          "jsr:@lukeed/fetch-event-stream@^0.1.5"
+        ]
+      },
+      "@std/http@0.221.0": {
+        "integrity": "35fdcfed1501f2052338bf7ffba5d66f1455f2fffc01e9d7cf13eed548fffbaa"
+      },
+      "@std/streams@0.221.0": {
+        "integrity": "47f2f74634b47449277c0ee79fe878da4424b66bd8975c032e3afdca88986e61"
+      }
+    },
+    "npm": {
+      "hono-rate-limiter@0.4.0_hono@4.5.3": {
+        "integrity": "sha512-7RWU2HZvxPtfBrvjXKDiQ3F6ZH8k49JhxVkHquUz5UZKjauj5PrP29MvISykThtfpy4mGG6kqxFBHW1ed9wwnA==",
+        "dependencies": {
+          "hono": "hono@4.5.3"
+        }
+      },
+      "hono@4.5.3": {
+        "integrity": "sha512-r26WwwbKD3BAYdfB294knNnegNda7VfV1tVn66D9Kvl9WQTdrR+5eKdoeaQNHQcC3Gr0KBikzAtjd6VsRGVSaw==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "jsr:@hono/hono@^4.5.3",
+      "jsr:@lukeed/fetch-event-stream@^0.1.5",
+      "jsr:@mumulhl/duckduckgo-ai-chat@^2.0.3",
+      "npm:hono-rate-limiter@^0.4.0"
+    ]
+  }
+}
