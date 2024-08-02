@@ -1,5 +1,5 @@
-import { Hono } from "hono";
-import { bearerAuth } from "hono/bearer-auth";
+import { Hono } from "jsr:@hono/hono";
+import { bearerAuth } from "jsr:@hono/hono/bearer-auth";
 import { Chat, initChat, Model } from "jsr:@mumulhl/duckduckgo-ai-chat";
 import { events } from "jsr:@lukeed/fetch-event-stream";
 import { rateLimiter } from "npm:hono-rate-limiter";

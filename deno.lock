@@ -2,10 +2,10 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "jsr:@hono/hono@^4.5.3": "jsr:@hono/hono@4.5.3",
+      "jsr:@hono/hono": "jsr:@hono/hono@4.5.3",
       "jsr:@lukeed/fetch-event-stream": "jsr:@lukeed/fetch-event-stream@0.1.5",
       "jsr:@lukeed/fetch-event-stream@^0.1.5": "jsr:@lukeed/fetch-event-stream@0.1.5",
-      "jsr:@mumulhl/duckduckgo-ai-chat@^2.0.3": "jsr:@mumulhl/duckduckgo-ai-chat@2.0.3",
+      "jsr:@mumulhl/duckduckgo-ai-chat": "jsr:@mumulhl/duckduckgo-ai-chat@2.0.3",
       "jsr:@std/streams@^0.221.0": "jsr:@std/streams@0.221.0",
       "npm:hono-rate-limiter": "npm:hono-rate-limiter@0.4.0_hono@4.5.3"
     },
@@ -42,13 +42,5 @@
       }
     }
   },
-  "remote": {},
-  "workspace": {
-    "dependencies": [
-      "jsr:@hono/hono@^4.5.3",
-      "jsr:@lukeed/fetch-event-stream@^0.1.5",
-      "jsr:@mumulhl/duckduckgo-ai-chat@^2.0.3",
-      "npm:hono-rate-limiter@^0.4.0"
-    ]
-  }
+  "remote": {}
 }
