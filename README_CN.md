@@ -20,6 +20,7 @@ duckduckgo-ai-chat-service
 ### Deno Deploy
 
 ```sh
+git clone https://github.com/mumu-lhl/duckduckgo-ai-chat-service --depth 1
 deno install -A jsr:@deno/deployctl
 deployctl deploy
 ```
