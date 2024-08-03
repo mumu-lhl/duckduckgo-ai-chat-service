@@ -57,10 +57,18 @@ const limiter = rateLimiter({
 
 app.use("/v1/*", limiter);
 
-function setCache(messages: Messages, chat: Chat) {
-  const messages_only_content = messages.map((m) => m.content);
+function setCache(chat: Chat) {
+  const messages_only_content = chat.messages.map((m) => m.content);
   const stringify = JSON.stringify(messages_only_content);
   chatCache.set(stringify, chat);
+}
+
+function setRedoCache(chat: Chat) {
+  const chatRedo = structuredClone(chat);
+  chatRedo.messages.pop();
+  chatRedo.messages.pop();
+  chatRedo.newVqd = chatRedo.oldVqd;
+  setCache(chatRedo);
 }
 
 function findCache(messages: Messages): Chat | undefined {
@@ -163,13 +171,8 @@ function fetchStream(chat: Chat, messages: Messages) {
     }
 
     if (chat.messages.length >= 4) {
-      setCache(chat.messages, chat);
-
-      const chatRedo = structuredClone(chat);
-      chatRedo.messages.pop();
-      chatRedo.messages.pop();
-      chatRedo.newVqd = chatRedo.oldVqd;
-      setCache(chatRedo.messages, chatRedo);
+      setCache(chat);
+      setRedoCache(chat);
     }
   };
 }
@@ -199,13 +202,8 @@ app.post("/v1/chat/completions", async (c) => {
   const { id, model, created, text } = await fetchFull(chat, messages);
 
   if (chat.messages.length >= 4) {
-    setCache(chat.messages, chat);
-
-    const chatRedo = structuredClone(chat);
-    chatRedo.messages.pop();
-    chatRedo.messages.pop();
-    chatRedo.newVqd = chatRedo.oldVqd;
-    setCache(chatRedo.messages, chatRedo);
+    setCache(chat);
+    setRedoCache(chat);
   }
 
   return c.json({
