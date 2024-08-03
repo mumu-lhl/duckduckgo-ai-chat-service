@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "start": "deno run --allow-net --allow-env main.ts"
+    "start": "deno run --unstable --allow-net --allow-env main.ts"
   },
   "compilerOptions": {
     "jsx": "precompile",
