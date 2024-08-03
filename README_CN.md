@@ -19,8 +19,14 @@ duckduckgo-ai-chat-service
 
 ### Deno Deploy
 
+#### 命令行
+
 ```sh
 git clone https://github.com/mumu-lhl/duckduckgo-ai-chat-service --depth 1
 deno install -A jsr:@deno/deployctl
 deployctl deploy
 ```
+
+#### Web
+
+fork 本项目，访问 <https://dash.deno.com>，登录后点击创建新项目。
