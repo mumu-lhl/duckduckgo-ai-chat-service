@@ -1,5 +1,5 @@
 import { Hono } from "jsr:@hono/hono";
-import { streamSSE } from "jsr:@hono/hono/streaming";
+import { SSEStreamingApi, streamSSE } from "jsr:@hono/hono/streaming";
 import { bearerAuth } from "jsr:@hono/hono/bearer-auth";
 import { Chat, initChat, Model } from "jsr:@mumulhl/duckduckgo-ai-chat";
 import { events } from "jsr:@lukeed/fetch-event-stream";
@@ -112,6 +112,47 @@ async function fetchFull(chat: Chat, messages: Messages) {
   return { id, created, model, text };
 }
 
+function fetchStream(chat: Chat, messages: Messages) {
+  return async (s: SSEStreamingApi) => {
+    for (let i = 0; i < messages.length; i += 2) {
+      let text = "";
+      let messageData;
+
+      const content = messages[i]["content"];
+      const message = await chat.fetch(content);
+
+      const stream = events(message as Response);
+
+      for await (const event of stream) {
+        if (!event.data) {
+          break;
+        }
+
+        messageData = JSON.parse(event.data);
+        const dataStream = new DataStream(messageData);
+        await s.writeSSE({
+          data: JSON.stringify(dataStream),
+        });
+        if (messageData["message"] == undefined) {
+          break;
+        } else {
+          text += messageData["message"];
+        }
+      }
+
+      const newVqd = message.headers.get("x-vqd-4") as string;
+      chat.oldVqd = chat.newVqd;
+      chat.newVqd = newVqd;
+
+      chat.messages.push({ content: text, role: "assistant" });
+    }
+
+    if (chat.messages.length >= 4) {
+      setCache(chat.messages, chat);
+    }
+  };
+}
+
 app.post("/v1/chat/completions", async (c) => {
   const body = await c.req.json();
   const stream: boolean = body["stream"];
@@ -135,44 +176,7 @@ app.post("/v1/chat/completions", async (c) => {
   }
 
   if (stream) {
-    return streamSSE(c, async (s) => {
-      for (let i = 0; i < messages.length; i += 2) {
-        let text = "";
-        let messageData;
-
-        const content = messages[i]["content"];
-        const message = await chat.fetch(content);
-
-        const stream = events(message as Response);
-
-        for await (const event of stream) {
-          if (!event.data) {
-            break;
-          }
-
-          messageData = JSON.parse(event.data);
-          const dataStream = new DataStream(messageData);
-          await s.writeSSE({
-            data: JSON.stringify(dataStream),
-          });
-          if (messageData["message"] == undefined) {
-            break;
-          } else {
-            text += messageData["message"];
-          }
-        }
-
-        const newVqd = message.headers.get("x-vqd-4") as string;
-        chat.oldVqd = chat.newVqd;
-        chat.newVqd = newVqd;
-
-        chat.messages.push({ content: text, role: "assistant" });
-      }
-
-      if (chat.messages.length >= 4) {
-        setCache(chat.messages, chat);
-      }
-    });
+    return streamSSE(c, fetchStream(chat, messages));
   }
 
   const { id, model, created, text } = await fetchFull(chat, messages);
