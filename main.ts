@@ -171,7 +171,6 @@ function fetchStream(chat: Chat, messages: Messages) {
       chatRedo.newVqd = chatRedo.oldVqd;
       setCache(chatRedo.messages, chatRedo);
     }
-    console.log(chatCache);
   };
 }
 
