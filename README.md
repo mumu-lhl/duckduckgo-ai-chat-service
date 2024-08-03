@@ -30,3 +30,11 @@ deployctl deploy
 #### Web
 
 Fork this project, then visit <https://dash.deno.com> and create new project after loging in.
+
+## Configuration
+
+Configuration using environment variables:
+
+* TOKEN - Limit the tokens that can access the API, if you don't fill in, any token can access the API.
+* LIMIT - limit the request rate per second, default is 2
+* CLEAN_CACHE_CRON - how many hours to clean up the cache, default is 1

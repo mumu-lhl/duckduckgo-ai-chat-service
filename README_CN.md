@@ -30,3 +30,11 @@ deployctl deploy
 #### Web
 
 fork 本项目，访问 <https://dash.deno.com>，登录后点击创建新项目。
+
+## 配置
+
+采用环境变量进行配置：
+
+* TOKEN - 限制可以访问 API 的 token，如果不填，任意的 token 都可以访问 API
+* LIMIT - 每秒请求速率限制，默认为 2
+* CLEAN_CACHE_CRON - 每个多少小时清理缓存，默认为 1
