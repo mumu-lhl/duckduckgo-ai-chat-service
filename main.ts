@@ -1,4 +1,5 @@
 import { Hono } from "jsr:@hono/hono";
+import { streamSSE } from "jsr:@hono/hono/streaming";
 import { bearerAuth } from "jsr:@hono/hono/bearer-auth";
 import { Chat, initChat, Model } from "jsr:@mumulhl/duckduckgo-ai-chat";
 import { events } from "jsr:@lukeed/fetch-event-stream";
@@ -69,13 +70,14 @@ async function fetchFull(chat: Chat, messages: Messages) {
 
     const stream = events(message as Response);
     for await (const event of stream) {
-      if (event.data) {
-        messageData = JSON.parse(event.data);
-        if (messageData["message"] == undefined) {
-          break;
-        } else {
-          text += messageData["message"];
-        }
+      if (!event.data) {
+        break;
+      }
+      messageData = JSON.parse(event.data);
+      if (messageData["message"] == undefined) {
+        break;
+      } else {
+        text += messageData["message"];
       }
     }
 
@@ -93,6 +95,7 @@ async function fetchFull(chat: Chat, messages: Messages) {
 
 app.post("/v1/chat/completions", async (c) => {
   const body = await c.req.json();
+  const stream: boolean = body["stream"];
   const model_name: Model = body["model"];
   let messages: Messages = body["messages"];
 
@@ -110,6 +113,77 @@ app.post("/v1/chat/completions", async (c) => {
   if (chat.messages.length >= 3) {
     const chatRedo = structuredClone(chat);
     setCache(chat.messages, chatRedo);
+  }
+
+  if (stream) {
+    return streamSSE(c, async (s) => {
+      for (let i = 0; i < messages.length; i += 2) {
+        let text = "";
+        let messageData;
+
+        const content = messages[i]["content"];
+        const message = await chat.fetch(content);
+
+        const stream = events(message as Response);
+        let first = true;
+
+        for await (const event of stream) {
+          if (!event.data) {
+            break;
+          }
+
+          messageData = JSON.parse(event.data);
+          if (first) {
+            first = false;
+            await s.writeSSE({
+              data: JSON.stringify({
+                id: messageData["id"],
+                model: messageData["model"],
+                created: messageData["created"],
+                choices: [{ "delta": { "content": "", "role": "assistant" } }],
+              }),
+            });
+            continue;
+          }
+
+          if (messageData["message"] == undefined) {
+            await s.writeSSE({
+              data: JSON.stringify({
+                id: messageData["id"],
+                model: messageData["model"],
+                created: messageData["created"],
+                choices: [{
+                  "delta": {},
+                }],
+              }),
+            });
+            break;
+          } else {
+            text += messageData["message"];
+            await s.writeSSE({
+              data: JSON.stringify({
+                id: messageData["id"],
+                model: messageData["model"],
+                created: messageData["created"],
+                choices: [{
+                  "delta": { "content": messageData["message"] },
+                }],
+              }),
+            });
+          }
+        }
+
+        const newVqd = message.headers.get("x-vqd-4") as string;
+        chat.oldVqd = chat.newVqd;
+        chat.newVqd = newVqd;
+
+        chat.messages.push({ content: text, role: "assistant" });
+      }
+
+      if (chat.messages.length >= 4) {
+        setCache(chat.messages, chat);
+      }
+    });
   }
 
   const { id, model, created, text } = await fetchFull(chat, messages);
