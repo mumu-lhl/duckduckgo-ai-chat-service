@@ -10,10 +10,10 @@
 
 ```sh
 # 直接运行
-deno run --allow-env --allow-net https://raw.githubusercontent.com/mumu-lhl/duckduckgo-ai-chat-service/main/main.ts
+deno run --allow-env --allow-net --unstable https://raw.githubusercontent.com/mumu-lhl/duckduckgo-ai-chat-service/main/main.ts
 
 # 安装后运行
-deno install -g --allow-env --allow-net -n duckduckgo-ai-chat-service https://raw.githubusercontent.com/mumu-lhl/duckduckgo-ai-chat-service/main/main.ts
+deno install -g --allow-env --allow-net --unstable -n duckduckgo-ai-chat-service https://raw.githubusercontent.com/mumu-lhl/duckduckgo-ai-chat-service/main/main.ts
 duckduckgo-ai-chat-service
 ```
 
