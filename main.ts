@@ -1,6 +1,6 @@
-import { Hono } from "npm:hono";
-import { SSEStreamingApi, streamSSE } from "npm:hono/streaming";
-import { bearerAuth } from "npm:hono/bearer-auth";
+import { Hono } from "jsr:@hono/hono";
+import { SSEStreamingApi, streamSSE } from "jsr:@hono/hono/streaming";
+import { bearerAuth } from "jsr:@hono/hono/bearer-auth";
 import { Chat, initChat, Model } from "jsr:@mumulhl/duckduckgo-ai-chat";
 import { events } from "jsr:@lukeed/fetch-event-stream";
 import { rateLimiter } from "npm:hono-rate-limiter";
