@@ -74,13 +74,18 @@ function findCache(messages: Messages): Chat | undefined {
     messages_only_content.pop();
     const stringify = JSON.stringify(messages_only_content);
     chat = chatCache.get(stringify);
-    removeCache(messages);
+    removeCache(messages_only_content);
+
+    messages_only_content.pop();
+    messages_only_content.pop();
+    removeCache(messages_only_content);
+
     return chat;
   }
 }
 
-function removeCache(messages: Messages) {
-  const stringify = JSON.stringify(messages);
+function removeCache(messages_only_content: string[]) {
+  const stringify = JSON.stringify(messages_only_content);
   chatCache.delete(stringify);
 }
 
@@ -137,10 +142,12 @@ function fetchStream(chat: Chat, messages: Messages) {
         }
 
         messageData = JSON.parse(event.data);
-        const dataStream = new DataStream(messageData);
-        await s.writeSSE({
-          data: JSON.stringify(dataStream),
-        });
+        if (i === messages.length - 1) {
+          const dataStream = new DataStream(messageData);
+          await s.writeSSE({
+            data: JSON.stringify(dataStream),
+          });
+        }
         if (messageData["message"] == undefined) {
           break;
         } else {
@@ -157,7 +164,14 @@ function fetchStream(chat: Chat, messages: Messages) {
 
     if (chat.messages.length >= 4) {
       setCache(chat.messages, chat);
+
+      const chatRedo = structuredClone(chat);
+      chatRedo.messages.pop();
+      chatRedo.messages.pop();
+      chatRedo.newVqd = chatRedo.oldVqd;
+      setCache(chatRedo.messages, chatRedo);
     }
+    console.log(chatCache);
   };
 }
 
@@ -175,12 +189,8 @@ app.post("/v1/chat/completions", async (c) => {
   let chat = findCache(messages);
   if (chat == undefined) {
     chat = await initChat(model_name);
-  }
-
-  // For redo
-  if (chat.messages.length >= 3) {
-    const chatRedo = structuredClone(chat);
-    setCache(chat.messages, chatRedo);
+  } else {
+    messages = messages.slice(-1);
   }
 
   if (stream) {
@@ -191,6 +201,12 @@ app.post("/v1/chat/completions", async (c) => {
 
   if (chat.messages.length >= 4) {
     setCache(chat.messages, chat);
+
+    const chatRedo = structuredClone(chat);
+    chatRedo.messages.pop();
+    chatRedo.messages.pop();
+    chatRedo.newVqd = chatRedo.oldVqd;
+    setCache(chatRedo.messages, chatRedo);
   }
 
   return c.json({
