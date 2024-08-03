@@ -7,6 +7,14 @@ import { rateLimiter } from "npm:hono-rate-limiter";
 
 type Messages = { content: string; role: "user" | "assistant" | "system" }[];
 
+type MessageData = {
+  id: string;
+  model: string;
+  created: number;
+  role?: "assistant";
+  message?: string;
+};
+
 class DataStream {
   id: string;
   model: string;
@@ -15,7 +23,7 @@ class DataStream {
     delta: { content?: string; role?: "assistant" };
   }[];
 
-  constructor(messageData) {
+  constructor(messageData: MessageData) {
     this.id = messageData["id"];
     this.model = messageData["model"];
     this.created = messageData["created"];
@@ -77,9 +85,9 @@ function removeCache(messages: Messages) {
 }
 
 async function fetchFull(chat: Chat, messages: Messages) {
-  let message;
-  let text;
-  let messageData;
+  let message: Response | undefined;
+  let text: string | undefined;
+  let messageData: MessageData | undefined;
 
   for (let i = 0; i < messages.length; i += 2) {
     text = "";
@@ -92,7 +100,7 @@ async function fetchFull(chat: Chat, messages: Messages) {
       if (!event.data) {
         break;
       }
-      messageData = JSON.parse(event.data);
+      messageData = JSON.parse(event.data) as MessageData;
       if (messageData["message"] == undefined) {
         break;
       } else {
@@ -107,7 +115,7 @@ async function fetchFull(chat: Chat, messages: Messages) {
     chat.messages.push({ content: text, role: "assistant" });
   }
 
-  const { id, created, model } = messageData;
+  const { id, created, model } = messageData as MessageData;
 
   return { id, created, model, text };
 }
