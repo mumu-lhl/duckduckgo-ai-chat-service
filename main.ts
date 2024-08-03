@@ -7,6 +7,25 @@ import { rateLimiter } from "npm:hono-rate-limiter";
 
 type Messages = { content: string; role: "user" | "assistant" | "system" }[];
 
+class DataStream {
+  id: string;
+  model: string;
+  created: number;
+  choices: {
+    delta: { content?: string; role?: "assistant" };
+  }[];
+
+  constructor(messageData) {
+    this.id = messageData["id"];
+    this.model = messageData["model"];
+    this.created = messageData["created"];
+    this.choices = [{ delta: { content: messageData["message"] } }];
+    if (messageData["role"] === "assistant") {
+      this.choices[0]["delta"]["role"] = "assistant";
+    }
+  }
+}
+
 const app = new Hono();
 
 const chatCache = new Map<string, Chat>();
@@ -125,7 +144,6 @@ app.post("/v1/chat/completions", async (c) => {
         const message = await chat.fetch(content);
 
         const stream = events(message as Response);
-        let first = true;
 
         for await (const event of stream) {
           if (!event.data) {
@@ -133,43 +151,14 @@ app.post("/v1/chat/completions", async (c) => {
           }
 
           messageData = JSON.parse(event.data);
-          if (first) {
-            first = false;
-            await s.writeSSE({
-              data: JSON.stringify({
-                id: messageData["id"],
-                model: messageData["model"],
-                created: messageData["created"],
-                choices: [{ "delta": { "content": "", "role": "assistant" } }],
-              }),
-            });
-            continue;
-          }
-
+          const dataStream = new DataStream(messageData);
+          await s.writeSSE({
+            data: JSON.stringify(dataStream),
+          });
           if (messageData["message"] == undefined) {
-            await s.writeSSE({
-              data: JSON.stringify({
-                id: messageData["id"],
-                model: messageData["model"],
-                created: messageData["created"],
-                choices: [{
-                  "delta": {},
-                }],
-              }),
-            });
             break;
           } else {
             text += messageData["message"];
-            await s.writeSSE({
-              data: JSON.stringify({
-                id: messageData["id"],
-                model: messageData["model"],
-                created: messageData["created"],
-                choices: [{
-                  "delta": { "content": messageData["message"] },
-                }],
-              }),
-            });
           }
         }
 
