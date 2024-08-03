@@ -2,7 +2,7 @@
 
 English | [中文](./README_CN.md)
 
-Use [Duckduckgo AI Chat](https://duckduckgo.com/aichat) to provide an OpenAI-compatible API that can be used for free with gpt-4o-mini.
+Provide an OpenAI-compatible API for [Duckduckgo AI Chat](https://duckduckgo.com/aichat) that can be used for free with gpt-4o-mini.
 
 ## Deploy
 
@@ -38,3 +38,7 @@ Configuration using environment variables:
 * TOKEN - Limit the tokens that can access the API, if you don't fill in, any token can access the API.
 * LIMIT - limit the request rate per second, default is 2
 * CLEAN_CACHE_CRON - how many hours to clean up the cache, default is 1
+
+## Usage
+
+Just change the base url of the place where you need to use the OpenAI API to the one you deployed.

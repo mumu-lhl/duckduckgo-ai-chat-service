@@ -2,7 +2,7 @@
 
 [English](./README.md) | 中文
 
-使用 [Duckduckgo AI Chat](https://duckduckgo.com/aichat) 提供兼容 OpenAI 的 API，可以免费使用 gpt-4o-mini。
+为 [Duckduckgo AI Chat](https://duckduckgo.com/aichat) 提供兼容 OpenAI 的 API，可以免费使用 gpt-4o-mini。
 
 ## 部署
 
@@ -38,3 +38,7 @@ fork 本项目，访问 <https://dash.deno.com>，登录后点击创建新项目
 * TOKEN - 限制可以访问 API 的 token，如果不填，任意的 token 都可以访问 API
 * LIMIT - 每秒请求速率限制，默认为 2
 * CLEAN_CACHE_CRON - 每个多少小时清理缓存，默认为 1
+
+## 使用
+
+将需要用到 OpenAI API 的地方的 base url 改成部署得到的即可。
