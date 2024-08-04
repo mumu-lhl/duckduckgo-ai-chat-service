@@ -1,9 +1,9 @@
-import { Hono } from "jsr:@hono/hono";
-import { SSEStreamingApi, streamSSE } from "jsr:@hono/hono/streaming";
-import { bearerAuth } from "jsr:@hono/hono/bearer-auth";
-import { Chat, initChat, Model } from "jsr:@mumulhl/duckduckgo-ai-chat";
-import { events } from "jsr:@lukeed/fetch-event-stream";
-import { rateLimiter } from "npm:hono-rate-limiter";
+import { Hono } from "@hono/hono";
+import { SSEStreamingApi, streamSSE } from "@hono/hono/streaming";
+import { bearerAuth } from "@hono/hono/bearer-auth";
+import { Chat, initChat, Model } from "@mumulhl/duckduckgo-ai-chat";
+import { events } from "@lukeed/fetch-event-stream";
+import { rateLimiter } from "hono-rate-limiter";
 
 type Messages = { content: string; role: "user" | "assistant" | "system" }[];
 
