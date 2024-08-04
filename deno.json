@@ -7,9 +7,9 @@
     "jsxImportSource": "hono/jsx"
   },
   "imports": {
-    "hono": "jsr:@hono/hono@^4.5.3",
-    "fetch-event-stream": "jsr:@lukeed/fetch-event-stream@^0.1.5",
-    "duckduckgo-ai-chat": "jsr:@mumulhl/duckduckgo-ai-chat@^2.0.3",
+    "@hono/hono": "jsr:@hono/hono@^4.5.3",
+    "@lukeed/fetch-event-stream": "jsr:@lukeed/fetch-event-stream@^0.1.5",
+    "@mumulhl/duckduckgo-ai-chat": "jsr:@mumulhl/duckduckgo-ai-chat@^2.0.3",
     "hono-rate-limiter": "npm:hono-rate-limiter@^0.4.0"
   }
 }

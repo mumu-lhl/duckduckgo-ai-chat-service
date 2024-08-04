@@ -1,8 +1,8 @@
-import { Hono } from "hono";
-import { SSEStreamingApi, streamSSE } from "hono/streaming";
-import { bearerAuth } from "hono/bearer-auth";
-import { Chat, initChat, Model } from "duckduckgo-ai-chat";
-import { events } from "fetch-event-stream";
+import { Hono } from "@hono/hono";
+import { SSEStreamingApi, streamSSE } from "@hono/hono/streaming";
+import { bearerAuth } from "@hono/hono/bearer-auth";
+import { Chat, initChat, Model } from "@mumulhl/duckduckgo-ai-chat";
+import { events } from "@lukeed/fetch-event-stream";
 import { rateLimiter } from "hono-rate-limiter";
 
 type Messages = { content: string; role: "user" | "assistant" | "system" }[];
