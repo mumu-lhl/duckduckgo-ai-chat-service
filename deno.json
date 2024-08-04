@@ -8,7 +8,6 @@
   },
   "imports": {
     "hono": "jsr:@hono/hono@^4.5.3",
-    "hono/bearer-auth": "jsr:@hono/hono@^4.5.3/bearer-auth",
     "fetch-event-stream": "jsr:@lukeed/fetch-event-stream@^0.1.5",
     "duckduckgo-ai-chat": "jsr:@mumulhl/duckduckgo-ai-chat@^2.0.3",
     "hono-rate-limiter": "npm:hono-rate-limiter@^0.4.0"
