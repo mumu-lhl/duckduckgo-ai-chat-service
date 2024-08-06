@@ -24,12 +24,12 @@ class DataStream {
   }[];
 
   constructor(messageData: MessageData) {
-    this.id = messageData["id"];
-    this.model = messageData["model"];
-    this.created = messageData["created"];
-    this.choices = [{ delta: { content: messageData["message"] } }];
-    if (messageData["role"] === "assistant") {
-      this.choices[0]["delta"]["role"] = "assistant";
+    this.id = messageData.id;
+    this.model = messageData.model;
+    this.created = messageData.created;
+    this.choices = [{ delta: { content: messageData.message } }];
+    if (messageData.role === "assistant") {
+      this.choices[0].delta.role = "assistant";
     }
   }
 }
@@ -99,25 +99,28 @@ function removeCache(messages_only_content: string[]) {
 
 async function fetchFull(chat: Chat, messages: Messages) {
   let message: Response | undefined;
-  let text: string | undefined;
+  let text: string = "";
   let messageData: MessageData | undefined;
 
   for (let i = 0; i < messages.length; i += 2) {
-    text = "";
-
-    const content = messages[i]["content"];
+    const content = messages[i].content;
     message = await chat.fetch(content);
 
     const stream = events(message as Response);
     for await (const event of stream) {
-      if (!event.data) {
-        break;
+      if (!event.data || event.data === "[DONE]") {
+        break; // Kết thúc vòng lặp nếu không có dữ liệu hoặc nhận được thông điệp kết thúc
       }
-      messageData = JSON.parse(event.data) as MessageData;
-      if (messageData["message"] == undefined) {
-        break;
-      } else {
-        text += messageData["message"];
+      try {
+        messageData = JSON.parse(event.data) as MessageData;
+        if (messageData.message === undefined) {
+          break;
+        } else {
+          text += messageData.message;
+        }
+      } catch (e) {
+        console.error("Failed to parse JSON:", e);
+        break; // Nếu phân tích bị lỗi, kết thúc vòng lặp
       }
     }
 
@@ -137,29 +140,35 @@ function fetchStream(chat: Chat, messages: Messages) {
   return async (s: SSEStreamingApi) => {
     for (let i = 0; i < messages.length; i += 2) {
       let text = "";
-      let messageData;
+      let messageData: MessageData | undefined;
 
-      const content = messages[i]["content"];
+      const content = messages[i].content;
       const message = await chat.fetch(content);
 
       const stream = events(message as Response);
 
       for await (const event of stream) {
-        if (!event.data) {
-          break;
+        if (!event.data || event.data === "[DONE]") {
+          break; // Kết thúc vòng lặp nếu không có dữ liệu hoặc nhận được thông điệp kết thúc
         }
 
-        messageData = JSON.parse(event.data);
+        try {
+          messageData = JSON.parse(event.data);
+          if (messageData.message === undefined) {
+            break;
+          } else {
+            text += messageData.message;
+          }
+        } catch (e) {
+          console.error("Failed to parse JSON:", e);
+          break; // Ngừng khi gặp lỗi phân tích
+        }
+
         if (i === messages.length - 1) {
           const dataStream = new DataStream(messageData);
           await s.writeSSE({
             data: JSON.stringify(dataStream),
           });
-        }
-        if (messageData["message"] == undefined) {
-          break;
-        } else {
-          text += messageData["message"];
         }
       }
 
@@ -179,17 +188,17 @@ function fetchStream(chat: Chat, messages: Messages) {
 
 app.post("/v1/chat/completions", async (c) => {
   const body = await c.req.json();
-  const stream: boolean = body["stream"];
-  const model_name: Model = body["model"];
-  let messages: Messages = body["messages"];
+  const stream: boolean = body.stream;
+  const model_name: Model = body.model;
+  let messages: Messages = body.messages;
 
-  if (messages[0]["role"] === "system") {
-    messages[1]["content"] = messages[0]["content"] + messages[1]["content"];
+  if (messages[0].role === "system") {
+    messages[1].content = messages[0].content + messages[1].content;
     messages = messages.slice(1);
   }
 
   let chat = findCache(messages);
-  if (chat == undefined) {
+  if (chat === undefined) {
     chat = await initChat(model_name);
   } else {
     messages = messages.slice(-1);
@@ -211,7 +220,7 @@ app.post("/v1/chat/completions", async (c) => {
     model,
     created,
     choices: [{
-      "message": { "role": "assistant", "content": text },
+      message: { role: "assistant", content: text },
     }],
   });
 });
