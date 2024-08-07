@@ -44,7 +44,7 @@ if (token) {
 }
 
 const limit_var = Deno.env.get("LIMIT");
-let limit = 10;
+let limit = 2;
 if (limit_var !== undefined) {
   limit = Number(limit_var);
 }
@@ -99,28 +99,29 @@ function removeCache(messages_only_content: string[]) {
 
 async function fetchFull(chat: Chat, messages: Messages) {
   let message: Response | undefined;
-  let text: string = "";
   let messageData: MessageData | undefined;
 
   for (let i = 0; i < messages.length; i += 2) {
+    let text = ""; // Reset text at the beginning of each loop iteration
+
     const content = messages[i].content;
     message = await chat.fetch(content);
 
     const stream = events(message as Response);
     for await (const event of stream) {
       if (!event.data || event.data === "[DONE]") {
-        break; // Kết thúc vòng lặp nếu không có dữ liệu hoặc nhận được thông điệp kết thúc
+        break; // End the loop if there's no data or if the end message is received
       }
       try {
         messageData = JSON.parse(event.data) as MessageData;
         if (messageData.message === undefined) {
           break;
         } else {
-          text += messageData.message;
+          text += messageData.message; // Accumulate the message content
         }
       } catch (e) {
         console.error("Failed to parse JSON:", e);
-        break; // Nếu phân tích bị lỗi, kết thúc vòng lặp
+        break; // Stop if parsing fails
       }
     }
 
@@ -139,7 +140,7 @@ async function fetchFull(chat: Chat, messages: Messages) {
 function fetchStream(chat: Chat, messages: Messages) {
   return async (s: SSEStreamingApi) => {
     for (let i = 0; i < messages.length; i += 2) {
-      let text = "";
+      let text = ""; // Reset text at the beginning of each loop iteration
       let messageData: MessageData | undefined;
 
       const content = messages[i].content;
@@ -149,7 +150,7 @@ function fetchStream(chat: Chat, messages: Messages) {
 
       for await (const event of stream) {
         if (!event.data || event.data === "[DONE]") {
-          break; // Kết thúc vòng lặp nếu không có dữ liệu hoặc nhận được thông điệp kết thúc
+          break; // End the loop if there's no data or if the end message is received
         }
 
         try {
@@ -157,11 +158,11 @@ function fetchStream(chat: Chat, messages: Messages) {
           if (messageData.message === undefined) {
             break;
           } else {
-            text += messageData.message;
+            text += messageData.message; // Accumulate the message content
           }
         } catch (e) {
           console.error("Failed to parse JSON:", e);
-          break; // Ngừng khi gặp lỗi phân tích
+          break; // Stop if parsing fails
         }
 
         if (i === messages.length - 1) {
