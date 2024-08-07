@@ -44,7 +44,7 @@ if (token) {
 }
 
 const limit_var = Deno.env.get("LIMIT");
-let limit = 2;
+let limit = 10;
 if (limit_var !== undefined) {
   limit = Number(limit_var);
 }
