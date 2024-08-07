@@ -99,29 +99,29 @@ function removeCache(messages_only_content: string[]) {
 
 async function fetchFull(chat: Chat, messages: Messages) {
   let message: Response | undefined;
+  let text: string = ""; // Initialize text
   let messageData: MessageData | undefined;
 
   for (let i = 0; i < messages.length; i += 2) {
-    let text = ""; // Reset text at the beginning of each loop iteration
-
+    text = ""; // Reset the text at each loop to avoid stacking
     const content = messages[i].content;
     message = await chat.fetch(content);
 
     const stream = events(message as Response);
     for await (const event of stream) {
       if (!event.data || event.data === "[DONE]") {
-        break; // End the loop if there's no data or if the end message is received
+        break; // End the loop if there's no data or received end message
       }
       try {
         messageData = JSON.parse(event.data) as MessageData;
         if (messageData.message === undefined) {
           break;
         } else {
-          text += messageData.message; // Accumulate the message content
+          text += messageData.message; // Append message content
         }
       } catch (e) {
         console.error("Failed to parse JSON:", e);
-        break; // Stop if parsing fails
+        break; // End the loop on parse error
       }
     }
 
@@ -140,7 +140,7 @@ async function fetchFull(chat: Chat, messages: Messages) {
 function fetchStream(chat: Chat, messages: Messages) {
   return async (s: SSEStreamingApi) => {
     for (let i = 0; i < messages.length; i += 2) {
-      let text = ""; // Reset text at the beginning of each loop iteration
+      let text = ""; // Reset the text at each loop to avoid stacking
       let messageData: MessageData | undefined;
 
       const content = messages[i].content;
@@ -150,7 +150,7 @@ function fetchStream(chat: Chat, messages: Messages) {
 
       for await (const event of stream) {
         if (!event.data || event.data === "[DONE]") {
-          break; // End the loop if there's no data or if the end message is received
+          break; // End the loop if there's no data or received end message
         }
 
         try {
@@ -158,11 +158,11 @@ function fetchStream(chat: Chat, messages: Messages) {
           if (messageData.message === undefined) {
             break;
           } else {
-            text += messageData.message; // Accumulate the message content
+            text += messageData.message; // Append message content
           }
         } catch (e) {
           console.error("Failed to parse JSON:", e);
-          break; // Stop if parsing fails
+          break; // End the loop on parse error
         }
 
         if (i === messages.length - 1) {
