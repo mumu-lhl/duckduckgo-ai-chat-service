@@ -1,7 +1,7 @@
 import { Hono } from "jsr:@hono/hono";
 import { SSEStreamingApi, streamSSE } from "jsr:@hono/hono/streaming";
 import { bearerAuth } from "jsr:@hono/hono/bearer-auth";
-import { Chat, initChat, Model } from "jsr:@mumulhl/duckduckgo-ai-chat";
+import { Chat, initChat, ModelAlias } from "jsr:@mumulhl/duckduckgo-ai-chat@3";
 import { events } from "jsr:@lukeed/fetch-event-stream";
 import { rateLimiter } from "npm:hono-rate-limiter";
 
@@ -190,7 +190,7 @@ function fetchStream(chat: Chat, messages: Messages) {
 app.post("/v1/chat/completions", async (c) => {
   const body = await c.req.json();
   const stream: boolean = body.stream;
-  const model_name: Model = body.model;
+  const model_name: ModelAlias = body.model;
   let messages: Messages = body.messages;
 
   if (messages[0].role === "system") {
