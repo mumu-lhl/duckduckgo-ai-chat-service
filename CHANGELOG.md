@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [1.0.1](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.0.0..v1.0.1) - 2024-08-09
+
+### Bug Fixes
+
+- remove import specifier from code - ([a8e1837](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/a8e18379e5f290683fbce626fc6242b34a8298ff)) - Mumulhl
+- try to fix import path no prefixed with ... - ([7abcde2](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/7abcde22f77c74bcd21ae9f84bababe9886953f4)) - Mumulhl
+
+### Documentation
+
+- add usage - ([07cbd0b](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/07cbd0b0a59e0df188f192c8df672540efd0d62d)) - Mumulhl
+
+### Miscellaneous Chores
+
+- update duckduckgo-ai-chat to 3.0.0 - ([a7730cd](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/a7730cdeb4ef8963ee67335832032f0438a1ba66)) - Mumulhl
+
+### Refactoring
+
+- error handling and connection management ([#1](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/issues/1)) - ([4b59309](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/4b59309daeda6994a794e44ef6447be03e0ccc1a)) - Le Minh Quan
+
+### Revert
+
+- fix: try to fix import path no prefixed with ... - ([84178ab](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/84178ab178c9c7979dd96c9580a4db2fe875bcc3)) - Mumulhl
+- style: remove scope - ([46e2a9d](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/46e2a9dc1353cfaf1c9098757204f5ed5b2d207c)) - Mumulhl
+- fix: remove import specifier from code - ([bb36564](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/bb365645b0cb4958e54b0b3386eca33c54a8a4a4)) - Mumulhl
+
+### Style
+
+- remove scope - ([f2abf0a](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/f2abf0a0e40d7cfec7687d88791d36f98777e25f)) - Mumulhl
+
+---
 ## [1.0.0] - 2024-08-03
 
 ### Bug Fixes
@@ -36,6 +66,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 - initialize - ([9339454](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/9339454908a9cf6d178bd73350fa520c65be36e5)) - Mumulhl
 - update deno.lock - ([fb5f8de](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/fb5f8de751d7a2a231bbd73f55c73200e4f2fcb5)) - Mumulhl
+- release v1.0.0 - ([f7a7b26](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/f7a7b2621cf768a51e0641fa904ec829d6a767c4)) - Mumulhl
 
 ### Revert
 
