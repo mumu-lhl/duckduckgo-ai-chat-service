@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [1.0.2](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.0.1..v1.0.2) - 2024-08-10
+
+### Documentation
+
+- add Docker build to readme - ([9a99ae8](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/9a99ae878b7051e5c31d4fdfceaccfd75adb3828)) - Mumulhl
+
+### Miscellaneous Chores
+
+- support docker build - ([83e5036](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/83e5036a37eb27451771641f8df33db9fc45182d)) - Mumulhl
+- add docker workflow - ([886ce38](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/886ce38e87e5c936634d85f99e7991836d148e53)) - Mumulhl
+- change port in Dockerfile - ([eb55b55](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/eb55b5517775649d194e020df5a090fa61688a1a)) - Mumulhl
+
+---
 ## [1.0.1](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.0.0..v1.0.1) - 2024-08-09
 
 ### Bug Fixes
@@ -17,6 +30,7 @@ All notable changes to this project will be documented in this file. See [conven
 ### Miscellaneous Chores
 
 - update duckduckgo-ai-chat to 3.0.0 - ([a7730cd](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/a7730cdeb4ef8963ee67335832032f0438a1ba66)) - Mumulhl
+- release v1.0.1 - ([5823950](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/5823950da426e2e34d626fe58bc1e8bc265f505d)) - Mumulhl
 
 ### Refactoring
 
