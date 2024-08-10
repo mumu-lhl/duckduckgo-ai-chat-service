@@ -6,6 +6,10 @@ Provide an OpenAI-compatible API for [Duckduckgo AI Chat](https://duckduckgo.com
 
 ## Deploy
 
+### Render
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/mumu-lhl/duckduckgo-ai-chat-service)
+
 ### Deno
 
 ```sh
