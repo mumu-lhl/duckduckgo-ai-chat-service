@@ -1,0 +1,8 @@
+services:
+  - name: duckduckgo-ai-chat-service
+    type: web
+    runtime: image
+    plan: free
+    image:
+      url:
+        mumulhl/duckduckgo-ai-chat-service:latest
