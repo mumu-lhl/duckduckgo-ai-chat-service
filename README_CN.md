@@ -31,6 +31,12 @@ deployctl deploy
 
 fork 本项目，访问 <https://dash.deno.com>，登录后点击创建新项目。
 
+### Docker
+
+```sh
+docker run -d mumulhl/duckduckgo-ai-chat-service
+```
+
 ## 配置
 
 采用环境变量进行配置：

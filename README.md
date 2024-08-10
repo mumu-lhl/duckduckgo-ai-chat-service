@@ -31,6 +31,12 @@ deployctl deploy
 
 Fork this project, then visit <https://dash.deno.com> and create new project after loging in.
 
+### Docker
+
+```sh
+docker run -d mumulhl/duckduckgo-ai-chat-service
+```
+
 ## Configuration
 
 Configuration using environment variables:
