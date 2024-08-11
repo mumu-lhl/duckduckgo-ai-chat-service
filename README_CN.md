@@ -1,5 +1,8 @@
 # Duckduckgo AI Chat Service
 
+![Docker Pulls](https://img.shields.io/docker/pulls/mumulhl/duckduckgo-ai-chat-service)
+![GitHub Tag](https://img.shields.io/github/v/tag/mumu-lhl/duckduckgo-ai-chat-service)
+
 [English](./README.md) | 中文
 
 为 [Duckduckgo AI Chat](https://duckduckgo.com/aichat) 提供兼容 OpenAI 的 API，可以免费使用 gpt-4o-mini、claude-3-haiku、llama3.1...

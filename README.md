@@ -1,5 +1,8 @@
 # Duckduckgo AI Chat Service
 
+![Docker Pulls](https://img.shields.io/docker/pulls/mumulhl/duckduckgo-ai-chat-service)
+![GitHub Tag](https://img.shields.io/github/v/tag/mumu-lhl/duckduckgo-ai-chat-service)
+
 English | [中文](./README_CN.md)
 
 Provide an OpenAI-compatible API for [Duckduckgo AI Chat](https://duckduckgo.com/aichat) that can be used for free with gpt-4o-mini, claude-3-haiku, llama3.1...
