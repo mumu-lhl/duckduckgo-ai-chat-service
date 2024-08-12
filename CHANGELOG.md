@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [1.1.0](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.0.2..v1.1.0) - 2024-08-12
+
+### Bug Fixes
+
+- change --unstable flag to --unstable-cron - ([f8a7d45](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/f8a7d45674b0c9cbec13d5a2faff3b48f0d77c64)) - Mumulhl
+
+### Documentation
+
+- add render deploy - ([d998118](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/d99811826e106da20e12269de91d0f381cc53b0c)) - Mumulhl
+- update readme - ([f66c423](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/f66c42382bfb84c12c8063fa1014ad51c63eefef)) - Mumulhl
+- add badges - ([3112446](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/31124462d39764832ba23636056e10ba1880b995)) - Mumulhl
+
+### Features
+
+- add /v1/models - ([ac921d5](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/ac921d51b27bb0035faa02ee12fd066e4f51c24e)) - Mumulhl
+
+### Miscellaneous Chores
+
+- support render deploy - ([a76eb35](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/a76eb35d58d6ae97d7a2dd8875b38848456baab6)) - Mumulhl
+- update lockfile - ([f4c345d](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/f4c345d908407563358ccc5da81c1570c54a59bb)) - Mumulhl
+
+### Refactoring
+
+- optimize code structure - ([c36734e](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/c36734ec41cc19cb37e4e4e3e84e92c3211b86ce)) - Mumulhl
+
+---
 ## [1.0.2](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.0.1..v1.0.2) - 2024-08-10
 
 ### Documentation
@@ -14,6 +40,7 @@ All notable changes to this project will be documented in this file. See [conven
 - support docker build - ([83e5036](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/83e5036a37eb27451771641f8df33db9fc45182d)) - Mumulhl
 - add docker workflow - ([886ce38](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/886ce38e87e5c936634d85f99e7991836d148e53)) - Mumulhl
 - change port in Dockerfile - ([eb55b55](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/eb55b5517775649d194e020df5a090fa61688a1a)) - Mumulhl
+- release v1.0.2 - ([e4b115d](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/e4b115dd79f92bc9ad1e50902bdd8c7ce22c5af8)) - Mumulhl
 
 ---
 ## [1.0.1](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.0.0..v1.0.1) - 2024-08-09
