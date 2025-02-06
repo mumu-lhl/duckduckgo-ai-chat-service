@@ -5,7 +5,7 @@
 
 English | [中文](./README_CN.md)
 
-Provide an OpenAI-compatible API for [Duckduckgo AI Chat](https://duckduckgo.com/aichat) that can be used for free with gpt-4o-mini, claude-3-haiku, llama3.1...
+Provide an OpenAI-compatible API for [Duckduckgo AI Chat](https://duckduckgo.com/aichat) that can be used for free with o3-mini, gpt-4o-mini, claude-3-haiku, llama3.1...
 
 ## Deploy
 

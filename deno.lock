@@ -1,51 +1,54 @@
 {
-  "version": "3",
-  "packages": {
-    "specifiers": {
-      "jsr:@hono/hono": "jsr:@hono/hono@4.5.4",
-      "jsr:@lukeed/fetch-event-stream": "jsr:@lukeed/fetch-event-stream@0.1.5",
-      "jsr:@lukeed/fetch-event-stream@^0.1.5": "jsr:@lukeed/fetch-event-stream@0.1.5",
-      "jsr:@mumulhl/duckduckgo-ai-chat@3": "jsr:@mumulhl/duckduckgo-ai-chat@3.0.0",
-      "jsr:@std/http@^0.221.0": "jsr:@std/http@0.221.0",
-      "jsr:@std/streams@^0.221.0": "jsr:@std/streams@0.221.0",
-      "npm:hono-rate-limiter": "npm:hono-rate-limiter@0.4.0_hono@4.5.4"
+  "version": "4",
+  "specifiers": {
+    "jsr:@hono/hono@*": "4.5.4",
+    "jsr:@lukeed/fetch-event-stream@*": "0.1.5",
+    "jsr:@lukeed/fetch-event-stream@~0.1.5": "0.1.5",
+    "jsr:@mumulhl/duckduckgo-ai-chat@3": "3.1.0",
+    "jsr:@mumulhl/duckduckgo-ai-chat@3.1.0": "3.1.0",
+    "jsr:@std/http@0.221": "0.221.0",
+    "jsr:@std/streams@0.221": "0.221.0",
+    "npm:hono-rate-limiter@*": "0.4.0_hono@4.5.4"
+  },
+  "jsr": {
+    "@hono/hono@4.5.4": {
+      "integrity": "3792780b8460d5df0959b07c059db9325e4fa1a49f8b5aff7ab9bc870bdec8e3"
     },
-    "jsr": {
-      "@hono/hono@4.5.4": {
-        "integrity": "3792780b8460d5df0959b07c059db9325e4fa1a49f8b5aff7ab9bc870bdec8e3"
-      },
-      "@lukeed/fetch-event-stream@0.1.5": {
-        "integrity": "50fe145b95e6ead49584c4f00dbb266c34a572e2ac97a924463f567887cd99ce",
-        "dependencies": [
-          "jsr:@std/http@^0.221.0",
-          "jsr:@std/streams@^0.221.0"
-        ]
-      },
-      "@mumulhl/duckduckgo-ai-chat@3.0.0": {
-        "integrity": "855cc7377df15133e767d0b1aa055b6d8e16251fa3c3d8a4083edf2f722d4697",
-        "dependencies": [
-          "jsr:@lukeed/fetch-event-stream@^0.1.5"
-        ]
-      },
-      "@std/http@0.221.0": {
-        "integrity": "35fdcfed1501f2052338bf7ffba5d66f1455f2fffc01e9d7cf13eed548fffbaa"
-      },
-      "@std/streams@0.221.0": {
-        "integrity": "47f2f74634b47449277c0ee79fe878da4424b66bd8975c032e3afdca88986e61"
-      }
+    "@lukeed/fetch-event-stream@0.1.5": {
+      "integrity": "50fe145b95e6ead49584c4f00dbb266c34a572e2ac97a924463f567887cd99ce",
+      "dependencies": [
+        "jsr:@std/http",
+        "jsr:@std/streams"
+      ]
     },
-    "npm": {
-      "hono-rate-limiter@0.4.0_hono@4.5.4": {
-        "integrity": "sha512-7RWU2HZvxPtfBrvjXKDiQ3F6ZH8k49JhxVkHquUz5UZKjauj5PrP29MvISykThtfpy4mGG6kqxFBHW1ed9wwnA==",
-        "dependencies": {
-          "hono": "hono@4.5.4"
-        }
-      },
-      "hono@4.5.4": {
-        "integrity": "sha512-k2IguJfRgNCpDbAfpxk+o+fZBLFHl4+eIZUpjc1ItZWHeZ37SmT3efA1UpkIaC0hSf1NJg0E79/wWn6g9LQ4Cw==",
-        "dependencies": {}
-      }
+    "@mumulhl/duckduckgo-ai-chat@3.0.0": {
+      "integrity": "855cc7377df15133e767d0b1aa055b6d8e16251fa3c3d8a4083edf2f722d4697",
+      "dependencies": [
+        "jsr:@lukeed/fetch-event-stream@~0.1.5"
+      ]
+    },
+    "@mumulhl/duckduckgo-ai-chat@3.1.0": {
+      "integrity": "5b18d20c91c17259a91084ff16a838019c14254d75d3651f72e7fcfcd597dba7",
+      "dependencies": [
+        "jsr:@lukeed/fetch-event-stream@~0.1.5"
+      ]
+    },
+    "@std/http@0.221.0": {
+      "integrity": "35fdcfed1501f2052338bf7ffba5d66f1455f2fffc01e9d7cf13eed548fffbaa"
+    },
+    "@std/streams@0.221.0": {
+      "integrity": "47f2f74634b47449277c0ee79fe878da4424b66bd8975c032e3afdca88986e61"
     }
   },
-  "remote": {}
+  "npm": {
+    "hono-rate-limiter@0.4.0_hono@4.5.4": {
+      "integrity": "sha512-7RWU2HZvxPtfBrvjXKDiQ3F6ZH8k49JhxVkHquUz5UZKjauj5PrP29MvISykThtfpy4mGG6kqxFBHW1ed9wwnA==",
+      "dependencies": [
+        "hono"
+      ]
+    },
+    "hono@4.5.4": {
+      "integrity": "sha512-k2IguJfRgNCpDbAfpxk+o+fZBLFHl4+eIZUpjc1ItZWHeZ37SmT3efA1UpkIaC0hSf1NJg0E79/wWn6g9LQ4Cw=="
+    }
+  }
 }

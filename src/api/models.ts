@@ -20,6 +20,10 @@ function models(app: Hono<BlankEnv, BlankSchema, "/">) {
         "id": "mixtral",
         "object": "model",
         "owned_by": "duckduckgo-chat-ai",
+      }, {
+        "id": "o3-mini",
+        "object": "model",
+        "owned_by": "duckduckgo-chat-ai",
       }],
     });
   });
