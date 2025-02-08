@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [1.3.0](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.2.0..v1.3.0) - 2025-02-08
+
+### Miscellaneous Chores
+
+- **(deps)** update duckduckgo-ai-chat to v3.2.0 - ([786f779](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/786f7796db7567cc732164f2dec8dae042df42c8)) - Mumulhl
+- **(deps)** update @hono/hono to v4.7.0 and hono-rate-limiter to v0.4.2 - ([f131239](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/f131239f183d0121619a919a35febe6f59f527f5)) - Mumulhl
+
+### Refactoring
+
+- update model ownership information - ([71b5a6e](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/71b5a6e0be34072bd3258a71a495ec79353ad33f)) - Mumulhl
+
+---
 ## [1.2.0](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.1.0..v1.2.0) - 2025-02-06
 
 ### Features
