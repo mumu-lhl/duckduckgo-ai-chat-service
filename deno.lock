@@ -4,8 +4,9 @@
     "jsr:@hono/hono@*": "4.5.4",
     "jsr:@lukeed/fetch-event-stream@*": "0.1.5",
     "jsr:@lukeed/fetch-event-stream@~0.1.5": "0.1.5",
-    "jsr:@mumulhl/duckduckgo-ai-chat@3": "3.1.0",
+    "jsr:@mumulhl/duckduckgo-ai-chat@3": "3.2.0",
     "jsr:@mumulhl/duckduckgo-ai-chat@3.1.0": "3.1.0",
+    "jsr:@mumulhl/duckduckgo-ai-chat@3.2.0": "3.2.0",
     "jsr:@std/http@0.221": "0.221.0",
     "jsr:@std/streams@0.221": "0.221.0",
     "npm:hono-rate-limiter@*": "0.4.0_hono@4.5.4"
@@ -13,6 +14,9 @@
   "jsr": {
     "@hono/hono@4.5.4": {
       "integrity": "3792780b8460d5df0959b07c059db9325e4fa1a49f8b5aff7ab9bc870bdec8e3"
+    },
+    "@hono/hono@4.7.0": {
+      "integrity": "1eb10e1976d3dda22ab43115ecfa348a43cd17c8aea5c0039c9757ebded624f8"
     },
     "@lukeed/fetch-event-stream@0.1.5": {
       "integrity": "50fe145b95e6ead49584c4f00dbb266c34a572e2ac97a924463f567887cd99ce",
@@ -29,6 +33,12 @@
     },
     "@mumulhl/duckduckgo-ai-chat@3.1.0": {
       "integrity": "5b18d20c91c17259a91084ff16a838019c14254d75d3651f72e7fcfcd597dba7",
+      "dependencies": [
+        "jsr:@lukeed/fetch-event-stream@~0.1.5"
+      ]
+    },
+    "@mumulhl/duckduckgo-ai-chat@3.2.0": {
+      "integrity": "c8dcbc98506f8a86f45886acba7a576a0ebbd9122e9af83485edfe43058527b6",
       "dependencies": [
         "jsr:@lukeed/fetch-event-stream@~0.1.5"
       ]
