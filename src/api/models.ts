@@ -7,23 +7,23 @@ function models(app: Hono<BlankEnv, BlankSchema, "/">) {
       data: [{
         "id": "gpt-4o-mini",
         "object": "model",
-        "owned_by": "duckduckgo-chat-ai",
+        "owned_by": "OpenAI",
       }, {
         "id": "claude-3-haiku",
         "object": "model",
-        "owned_by": "duckduckgo-chat-ai",
+        "owned_by": "Anthropic",
       }, {
         "id": "llama",
         "object": "model",
-        "owned_by": "duckduckgo-chat-ai",
+        "owned_by": "Meta",
       }, {
         "id": "mixtral",
         "object": "model",
-        "owned_by": "duckduckgo-chat-ai",
+        "owned_by": "Mixtral",
       }, {
         "id": "o3-mini",
         "object": "model",
-        "owned_by": "duckduckgo-chat-ai",
+        "owned_by": "OpenAI",
       }],
     });
   });
