@@ -1,20 +1,16 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@hono/hono@*": "4.5.4",
+    "jsr:@hono/hono@*": "4.7.0",
     "jsr:@lukeed/fetch-event-stream@*": "0.1.5",
     "jsr:@lukeed/fetch-event-stream@~0.1.5": "0.1.5",
     "jsr:@mumulhl/duckduckgo-ai-chat@3": "3.2.0",
-    "jsr:@mumulhl/duckduckgo-ai-chat@3.1.0": "3.1.0",
     "jsr:@mumulhl/duckduckgo-ai-chat@3.2.0": "3.2.0",
     "jsr:@std/http@0.221": "0.221.0",
     "jsr:@std/streams@0.221": "0.221.0",
-    "npm:hono-rate-limiter@*": "0.4.0_hono@4.5.4"
+    "npm:hono-rate-limiter@*": "0.4.2_hono@4.7.0"
   },
   "jsr": {
-    "@hono/hono@4.5.4": {
-      "integrity": "3792780b8460d5df0959b07c059db9325e4fa1a49f8b5aff7ab9bc870bdec8e3"
-    },
     "@hono/hono@4.7.0": {
       "integrity": "1eb10e1976d3dda22ab43115ecfa348a43cd17c8aea5c0039c9757ebded624f8"
     },
@@ -23,18 +19,6 @@
       "dependencies": [
         "jsr:@std/http",
         "jsr:@std/streams"
-      ]
-    },
-    "@mumulhl/duckduckgo-ai-chat@3.0.0": {
-      "integrity": "855cc7377df15133e767d0b1aa055b6d8e16251fa3c3d8a4083edf2f722d4697",
-      "dependencies": [
-        "jsr:@lukeed/fetch-event-stream@~0.1.5"
-      ]
-    },
-    "@mumulhl/duckduckgo-ai-chat@3.1.0": {
-      "integrity": "5b18d20c91c17259a91084ff16a838019c14254d75d3651f72e7fcfcd597dba7",
-      "dependencies": [
-        "jsr:@lukeed/fetch-event-stream@~0.1.5"
       ]
     },
     "@mumulhl/duckduckgo-ai-chat@3.2.0": {
@@ -51,14 +35,14 @@
     }
   },
   "npm": {
-    "hono-rate-limiter@0.4.0_hono@4.5.4": {
-      "integrity": "sha512-7RWU2HZvxPtfBrvjXKDiQ3F6ZH8k49JhxVkHquUz5UZKjauj5PrP29MvISykThtfpy4mGG6kqxFBHW1ed9wwnA==",
+    "hono-rate-limiter@0.4.2_hono@4.7.0": {
+      "integrity": "sha512-AAtFqgADyrmbDijcRTT/HJfwqfvhalya2Zo+MgfdrMPas3zSMD8SU03cv+ZsYwRU1swv7zgVt0shwN059yzhjw==",
       "dependencies": [
         "hono"
       ]
     },
-    "hono@4.5.4": {
-      "integrity": "sha512-k2IguJfRgNCpDbAfpxk+o+fZBLFHl4+eIZUpjc1ItZWHeZ37SmT3efA1UpkIaC0hSf1NJg0E79/wWn6g9LQ4Cw=="
+    "hono@4.7.0": {
+      "integrity": "sha512-hV97aIR4WYbG30k234sD9B3VNr1ZWdQRmrVF76LKFlmI7O9Yo70mG9+mFwyQ6Sjrz4wH71GfnBxv6CPjcx3QNw=="
     }
   }
 }
