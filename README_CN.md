@@ -5,7 +5,7 @@
 
 [English](./README.md) | 中文
 
-为 [Duckduckgo AI Chat](https://duckduckgo.com/aichat) 提供兼容 OpenAI 的 API，可以免费使用 o3-mini, gpt-4o-mini、claude-3-haiku、llama3.1...
+为 [Duckduckgo AI Chat](https://duckduckgo.com/aichat) 提供兼容 OpenAI 的 API，可以免费使用 o3-mini, gpt-4o-mini、claude-3-haiku、llama3.3...
 
 ## 部署
 
