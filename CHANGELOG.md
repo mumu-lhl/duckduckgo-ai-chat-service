@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [1.4.0](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.3.0..v1.4.0) - 2025-02-22
+
+### Documentation
+
+- update README_CN.md - ([694f558](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/694f558afbab2b58b318d7dca3e31c6a7f5db325)) - Mumulhl
+
+### Miscellaneous Chores
+
+- **(deps)** update duckduckgo-ai-chat to v3.3.0 - ([fec0583](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/fec05834a97b00a7ba4353360d680bc3c515ef65)) - Mumulhl
+- **(docker)** update Deno version to 2.2.1 - ([7e4c28a](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/7e4c28ad4b0eb404c48c8d05d1c760671d6c4a13)) - Mumulhl
+
+### Dcos
+
+- update README.md - ([b9cd80f](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/commit/b9cd80fa0e9aa014a307805fb7ef5030b9270f53)) - Mumulhl
+
+---
 ## [1.3.0](https://github.com/mumu-lhl/duckduckgo-ai-chat-service/compare/v1.2.0..v1.3.0) - 2025-02-08
 
 ### Miscellaneous Chores
