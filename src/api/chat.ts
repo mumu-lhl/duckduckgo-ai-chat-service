@@ -1,4 +1,4 @@
-import { Chat, initChat, ModelAlias } from "jsr:@mumulhl/duckduckgo-ai-chat@3.2.0";
+import { Chat, initChat, ModelAlias } from "jsr:@mumulhl/duckduckgo-ai-chat@3.3.0";
 import { events } from "jsr:@lukeed/fetch-event-stream";
 
 import { Hono } from "jsr:@hono/hono";
