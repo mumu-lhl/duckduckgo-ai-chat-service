@@ -7,7 +7,7 @@ import { SSEStreamingApi, streamSSE } from "jsr:@hono/hono/streaming";
 
 import * as cache from "./../cache.ts";
 
-type Messages = { content: string; role: "user" | "assistant" | "system" }[];
+type Messages = { content: string; role: "user" | "assistant" | "system" | "developer" }[];
 
 type MessageData = {
   id: string;
@@ -134,7 +134,7 @@ function chat(app: Hono<BlankEnv, BlankSchema, "/">) {
     const model_name: ModelAlias = body.model;
     let messages: Messages = body.messages;
 
-    if (messages[0].role === "system") {
+    if (messages[0].role === "system" || messages[0].role === "developer") {
       messages[1].content = messages[0].content + messages[1].content;
       messages = messages.slice(1);
     }
