@@ -16,7 +16,7 @@ Provide an OpenAI-compatible API for [Duckduckgo AI Chat](https://duckduckgo.com
 ### Docker
 
 ```sh
-docker run -d mumulhl/duckduckgo-ai-chat-service
+docker run -p 8000:8000 -d mumulhl/duckduckgo-ai-chat-service
 ```
 
 ### Deno Deploy
